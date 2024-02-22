@@ -5,6 +5,8 @@ branch_whitelist = ["main"]
 pre_bump_hooks = [
     "cargo test",
     "cargo clippy",
+    "cargo install cargo-hack",
+    "cargo hack --feature-powerset check",
     "cargo fmt --all",
     "cargo install cargo-edit",
     "cargo set-version {{version}}",
