@@ -1,5 +1,11 @@
 #!/usr/bin/env -S just --justfile
 
+# Select a Rust toolchain - default is stable
+toolchain := "stable"
+
+# Internal variable for toolchain selection
+rust-toolchain := "+" + toolchain
+
 #
 # Setup the environment:
 #
@@ -33,13 +39,13 @@ setup-ci: setup-cargo-hack setup-cargo-audit setup-cargo-tools
 #
 
 test:
-    cargo test --no-fail-fast --workspace --locked --all-features --all-targets
+    cargo {{rust-toolchain}} test --no-fail-fast --workspace --locked --all-features --all-targets
 
 hack: setup-cargo-hack
-    cargo hack --feature-powerset --no-dev-deps check
+    cargo {{rust-toolchain}} hack --feature-powerset --no-dev-deps check
 
 clippy:
-    cargo clippy --quiet --release --all-targets --all-features
+    cargo {{rust-toolchain}} clippy --quiet --release --all-targets --all-features
 
 audit: setup-cargo-audit
     cargo audit
