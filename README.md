@@ -50,9 +50,10 @@ Prerequisites:
 First, download and setup the repository.
 
 ```sh
+$ cargo install --locked just
 $ git clone https://github.com/x-software-com/mithra
 $ cd mithra
-$ ./setup.py
+$ just setup
 ```
 
 To build the Mithra execute:

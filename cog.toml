@@ -3,11 +3,10 @@ ignore_merge_commits = true
 tag_prefix = "v"
 branch_whitelist = ["main"]
 pre_bump_hooks = [
-    "cargo test",
-    "cargo clippy",
-    "cargo install cargo-hack",
-    "cargo hack --feature-powerset check",
-    "cargo fmt --all",
+    "just test",
+    "just clippy",
+    "just hack",
+    "just cargo-fmt",
     "cargo install cargo-edit",
     "cargo set-version {{version}}",
     "cargo build --release",
@@ -21,7 +20,7 @@ script = """#!/bin/sh
 set -e
 
 echo "[ cargo fmt ]"
-cargo fmt --check
+just cargo-fmt-check
 
 echo "[ typos ]"
 typos
