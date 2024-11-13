@@ -30,15 +30,14 @@ fn parse_spdx_file(file: &Path) -> Result<spdx_rs::models::SPDX> {
         .collect::<Vec<_>>();
     let spdx_string_clean = clean.join("\n");
 
-    return serde_json::from_str(spdx_string_clean.as_ref())
-        .context(format!("Failed to parse SPDX JSON file {:?}", file));
+    serde_json::from_str(spdx_string_clean.as_ref()).context(format!("Failed to parse SPDX JSON file {:?}", file))
 }
 
 fn find_package_by_spdxid<'a>(
     id: &str,
     packages: &'a [spdx_rs::models::PackageInformation],
 ) -> Option<&'a PackageInformation> {
-    return packages.iter().find(|&x| x.package_spdx_identifier == id);
+    packages.iter().find(|&x| x.package_spdx_identifier == id)
 }
 
 fn find_package_license(pkg: &PackageInformation) -> Option<String> {
