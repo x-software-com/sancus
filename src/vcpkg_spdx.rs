@@ -42,18 +42,18 @@ fn find_package_by_spdxid<'a>(
 }
 
 fn find_package_license(pkg: &PackageInformation) -> Option<String> {
-    let mut found_licnese = None;
+    let mut found_license = None;
     if let Some(license) = pkg.declared_license.as_ref() {
         if license.to_string() != "NOASSERTION" {
-            found_licnese = Some(license.to_string());
+            found_license = Some(license.to_string());
         }
     }
     if let Some(license) = pkg.concluded_license.as_ref() {
-        if found_licnese.is_none() && license.to_string() != "NOASSERTION" {
-            found_licnese = Some(license.to_string());
+        if found_license.is_none() && license.to_string() != "NOASSERTION" {
+            found_license = Some(license.to_string());
         }
     }
-    found_licnese
+    found_license
 }
 
 fn find_license(packages: &[spdx_rs::models::PackageInformation]) -> Option<String> {
@@ -222,22 +222,22 @@ fn parse_package(pkg: spdx_rs::models::PackageInformation) -> termtree::Tree<Str
         )));
     }
 
-    let mut found_licnese = None;
+    let mut found_license = None;
     if let Some(license) = pkg.declared_license {
         if license.to_string() != "NOASSERTION" {
-            found_licnese = Some(format!("declared license: {}", license));
+            found_license = Some(format!("declared license: {}", license));
         }
     }
     if let Some(license) = pkg.concluded_license {
-        if found_licnese.is_none() && license.to_string() != "NOASSERTION" {
-            found_licnese = Some(format!("concluded license: {}", license));
+        if found_license.is_none() && license.to_string() != "NOASSERTION" {
+            found_license = Some(format!("concluded license: {}", license));
         }
     }
-    if found_licnese.is_none() {
-        found_licnese = Some("FOUND NO LICENSE!".to_owned());
+    if found_license.is_none() {
+        found_license = Some("FOUND NO LICENSE!".to_owned());
     }
 
-    sub_tree.push(termtree::Tree::new(found_licnese.unwrap()));
+    sub_tree.push(termtree::Tree::new(found_license.unwrap()));
 
     sub_tree
 }
