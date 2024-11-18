@@ -1,10 +1,7 @@
 #!/usr/bin/env -S just --justfile
 
-# Select a Rust toolchain - default is stable
-toolchain := "stable"
-
-# Internal variable for toolchain selection
-rust-toolchain := "+" + toolchain
+# Default Rust toolchain
+rust-toolchain := "stable"
 
 #
 # Setup the environment:
@@ -38,14 +35,14 @@ setup-ci: setup-cargo-hack setup-cargo-audit setup-cargo-tools
 # Recipes for cargo:
 #
 
-test:
-    cargo {{rust-toolchain}} test --no-fail-fast --workspace --locked --all-features --all-targets
+test rust-toolchain=rust-toolchain:
+    cargo +{{rust-toolchain}} test --no-fail-fast --workspace --locked --all-features --all-targets
 
-hack: setup-cargo-hack
-    cargo {{rust-toolchain}} hack --feature-powerset --no-dev-deps check
+hack rust-toolchain=rust-toolchain: setup-cargo-hack
+    cargo +{{rust-toolchain}} hack --feature-powerset --no-dev-deps check
 
-clippy:
-    cargo {{rust-toolchain}} clippy --quiet --release --all-targets --all-features
+clippy rust-toolchain=rust-toolchain:
+    cargo +{{rust-toolchain}} clippy --quiet --release --all-targets --all-features
 
 audit: setup-cargo-audit
     cargo audit
