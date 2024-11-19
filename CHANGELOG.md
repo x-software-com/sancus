@@ -2,11 +2,8 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
-## [v0.1.0](https://github.com/x-software-com/sancus/compare/eeacdf941179a52a425106480275f68f64320258..v0.1.0) - 2024-02-19
 
-- - -
-
-## [v0.1.0](https://github.com/x-software-com/sancus/compare/96aa8bf492ffb107c1f56fa615c41ccd193e9d65..v0.1.0) - 2024-02-16
+## [v0.1.0](https://github.com/x-software-com/sancus/compare/96aa8bf492ffb107c1f56fa615c41ccd193e9d65..v0.1.0) - 2024-02-19
 #### Bug Fixes
 - improve handling of invalid filenames - ([23ef721](https://github.com/x-software-com/sancus/commit/23ef7219d267e187d3e5f46912e8e5fe2073d3b7)) - marcbull
 - fix problem with unusual license IDs - ([65f2296](https://github.com/x-software-com/sancus/commit/65f22965517a1f2b23035f7e0ecf7ff992f19b48)) - marcbull
