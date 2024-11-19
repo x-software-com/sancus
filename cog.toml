@@ -1,17 +1,12 @@
 from_latest_tag = false
 ignore_merge_commits = true
 tag_prefix = "v"
-branch_whitelist = ["main"]
+branch_whitelist = ["no_bump_allowed"]
 pre_bump_hooks = [
-    "just test",
-    "just clippy",
-    "just hack",
-    "just cargo-fmt",
-    "cargo install cargo-edit",
-    "cargo set-version {{version}}",
-    "cargo build --release",
+    "echo Bumping in cog is not allowed, please use release-plz to bump versions",
+    "exit 1",
 ]
-post_bump_hooks = ["git push", "git push origin v{{version}}"]
+post_bump_hooks = []
 pre_package_bump_hooks = []
 post_package_bump_hooks = []
 
@@ -33,12 +28,12 @@ cog verify --file $1
 """
 
 [changelog]
-path = "CHANGELOG.md"
-template = "remote"
-remote = "github.com"
-repository = "sancus"
-owner = "x-software-com"
-authors = [{ signature = "Marc Wiblishauser", username = "marcbull" }]
+path = ""
+template = ""
+remote = ""
+repository = ""
+owner = ""
+authors = []
 
 [commit_types]
 
