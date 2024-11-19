@@ -1,17 +1,17 @@
 [package]
-name = "mithra"
+name = "sancus"
 version = "0.1.0"
 license = "MIT OR APACHE-2.0"
-repository = "https://github.com/x-software-com/mithra/"
-description = "Mithra is an open-source tool that extracts third-party license information from a deployment-ready application"
+repository = "https://github.com/x-software-com/sancus/"
+description = "Sancus is an open-source tool that extracts third-party license information from a deployment-ready application"
 edition = "2021"
 
 [lib]
-name = "mithra_lib"
+name = "sancus_lib"
 path = "src/lib.rs"
 
 [[bin]]
-name = "mithra"
+name = "sancus"
 path = "src/main.rs"
 required-features = ["bin-dependencies"]
 

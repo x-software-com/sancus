@@ -1,22 +1,22 @@
-[![CI checks](https://github.com/x-software-com/mithra/actions/workflows/check.yml/badge.svg)](https://github.com/x-software-com/mithra/actions/workflows/check.yml)
-[![dependency status](https://deps.rs/repo/github/x-software-com/mithra/status.svg)](https://deps.rs/repo/github/x-software-com/mithra)
+[![CI checks](https://github.com/x-software-com/sancus/actions/workflows/check.yml/badge.svg)](https://github.com/x-software-com/sancus/actions/workflows/check.yml)
+[![dependency status](https://deps.rs/repo/github/x-software-com/sancus/status.svg)](https://deps.rs/repo/github/x-software-com/sancus)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-# Mithra: Overview
+# Sancus: Overview
 
-**NOTE:** Mithra currently expects deep integration with the build system, and is difficult to deploy to environments dissimilar to the X-Software environment. We do not have our tooling set up to accept external contributions at this time.
+**NOTE:** Sancus currently expects deep integration with the build system, and is difficult to deploy to environments dissimilar to the X-Software environment. We do not have our tooling set up to accept external contributions at this time.
 
-Mithra is an open-source tool that extracts third-party license information from a deployment-ready application.
+Sancus is an open-source tool that extracts third-party license information from a deployment-ready application.
 
-Currently, Mithra solely operates on [AppDir](https://github.com/TheAssassin/linuxdeploy/wiki/AppDir-specification) packages consisting of VCPKG libraries and operating system libraries. It collects information from both sources to extract licenses of all shared libraries that an application uses directly or indirectly within the AppDir. The result is a JSON file containing all license types and the texts.
+Currently, Sancus solely operates on [AppDir](https://github.com/TheAssassin/linuxdeploy/wiki/AppDir-specification) packages consisting of VCPKG libraries and operating system libraries. It collects information from both sources to extract licenses of all shared libraries that an application uses directly or indirectly within the AppDir. The result is a JSON file containing all license types and the texts.
 
 The obtained third-party license information can be exported to directory structure in the AppDir or the 
 
-If you've never used Mithra before, or if you're trying to figure out how to use it, check out our [Getting Started](#getting-started) section.
+If you've never used Sancus before, or if you're trying to figure out how to use it, check out our [Getting Started](#getting-started) section.
 
 # Table of Contents
 
-- [Mithra: Overview](#mithra-overview)
+- [Sancus: Overview](#sancus-overview)
 - [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
   - [Quick Start](#quick-start)
@@ -37,7 +37,7 @@ Prerequisites:
 Add the following line to your `Cargo.toml`.
 
 ```
-mithra = { git = "https://github.com/x-software-com/mithra" }
+sancus = { git = "https://github.com/x-software-com/sancus" }
 ```
 
 ### Development: Linux
@@ -51,12 +51,12 @@ First, download and setup the repository.
 
 ```sh
 $ cargo install --locked just
-$ git clone https://github.com/x-software-com/mithra
-$ cd mithra
+$ git clone https://github.com/x-software-com/sancus
+$ cd sancus
 $ just setup
 ```
 
-To build the Mithra execute:
+To build the Sancus execute:
 
 ```sh
 $ cargo build
@@ -95,7 +95,7 @@ For any other distributions, make sure you're installing at least gcc and g++. I
 
 We believe that privacy is a human right, period.
 
-Mithra does respect your privacy, we collect no data and do not send any telemetry or usage data.
+Sancus does respect your privacy, we collect no data and do not send any telemetry or usage data.
 
 # License
 

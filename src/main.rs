@@ -12,7 +12,7 @@ use anyhow::{Context, Result};
 use clap::{Args, Parser, Subcommand};
 use flexi_logger::Logger;
 use log::*;
-use mithra_lib::{
+use sancus_lib::{
     file_info,
     file_info::FileInfo,
     license_detector::LicenseDetector,

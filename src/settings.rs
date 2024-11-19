@@ -81,7 +81,7 @@ impl Override {
 
 impl Settings {
     pub fn default_settings_file() -> std::path::PathBuf {
-        std::path::Path::new("mithra.yaml").to_path_buf()
+        std::path::Path::new("sancus.yaml").to_path_buf()
     }
 
     pub fn load(file: &std::path::Path) -> Result<Self> {
