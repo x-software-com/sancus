@@ -69,8 +69,8 @@ struct Cli {
     command: Commands,
 }
 
-const SYSTEM_THIRDPARTY_LICENSES_FILE: &str = "system_third_party_licenses.json";
-const VCPKG_THIRDPARTY_LICENSES_FILE: &str = "vcpkg_third_party_licenses.json";
+const SYSTEM_THIRD_PARTY_LICENSES_FILE: &str = "system_third_party_licenses.json";
+const VCPKG_THIRD_PARTY_LICENSES_FILE: &str = "vcpkg_third_party_licenses.json";
 
 fn find_package_system_libs(package_libs: &Vec<FileInfo>, vcpkg_libs: &[FileInfo]) -> Vec<FileInfo> {
     let mut system_libs = vec![];
@@ -112,7 +112,7 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
 
     #[cfg(target_os = "linux")]
     {
-        vcpkg_find_ignore_list.push("x64-linux".to_owned()); // Only used to providde build tools
+        vcpkg_find_ignore_list.push("x64-linux".to_owned()); // Only used to provide build tools
     }
 
     debug!("project = {:?}, package = {:?}", args.project_path, args.package_path);
@@ -147,13 +147,13 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
         }
     }
 
-    let mut package_find_igonre_list = vec!["debug".to_owned()];
+    let mut package_find_ignore_list = vec!["debug".to_owned()];
     for lib_ignore in &settings.lib_ignores {
         info!(
             "Add library {} to ignore list. Comment: {}",
             lib_ignore.lib, lib_ignore.comment
         );
-        package_find_igonre_list.push(lib_ignore.lib.clone());
+        package_find_ignore_list.push(lib_ignore.lib.clone());
     }
 
     // Find vcpkg installation
@@ -184,7 +184,7 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
             format!("Cannot find '.so' files in '{}'", vcpkg_installation.to_string_lossy()),
         )?;
     let package_libs =
-        file_info::find_files_recurse(&args.package_path.clone(), ".so", package_find_igonre_list.as_slice()).context(
+        file_info::find_files_recurse(&args.package_path.clone(), ".so", package_find_ignore_list.as_slice()).context(
             format!("Cannot find '.so' files in '{}'", args.package_path.to_string_lossy()),
         )?;
 
@@ -201,7 +201,7 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
 
     let vcpkg_third_party_licenses =
         third_party_licenses::ThirdPartyLicenses::new(format!("{}-vcpkg", args.package_name).as_str(), &vcpkg_licenses);
-    vcpkg_third_party_licenses.save(&args.result_path.join(VCPKG_THIRDPARTY_LICENSES_FILE))?;
+    vcpkg_third_party_licenses.save(&args.result_path.join(VCPKG_THIRD_PARTY_LICENSES_FILE))?;
     vcpkg_third_party_licenses.print();
 
     // Find libs that are either from vcpkg or from the system:
@@ -213,7 +213,7 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
         format!("{}-system", args.package_name).as_str(),
         &system_licenses,
     );
-    system_third_party_licenses.save(&args.result_path.join(SYSTEM_THIRDPARTY_LICENSES_FILE))?;
+    system_third_party_licenses.save(&args.result_path.join(SYSTEM_THIRD_PARTY_LICENSES_FILE))?;
     system_third_party_licenses.print();
 
     for crates_licenses_file in &args.additional_third_party_licenses {
