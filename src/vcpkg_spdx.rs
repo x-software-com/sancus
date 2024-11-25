@@ -33,7 +33,7 @@ fn parse_spdx_file(file: &Path) -> Result<spdx_rs::models::SPDX> {
     serde_json::from_str(spdx_string_clean.as_ref()).context(format!("Failed to parse SPDX JSON file {:?}", file))
 }
 
-fn find_package_by_spdxid<'a>(
+fn find_package_by_spdx_id<'a>(
     id: &str,
     packages: &'a [spdx_rs::models::PackageInformation],
 ) -> Option<&'a PackageInformation> {
@@ -56,12 +56,12 @@ fn find_package_license(pkg: &PackageInformation) -> Option<String> {
 }
 
 fn find_license(packages: &[spdx_rs::models::PackageInformation]) -> Option<String> {
-    if let Some(info) = find_package_by_spdxid(SPDX_ID_BINARY, packages) {
+    if let Some(info) = find_package_by_spdx_id(SPDX_ID_BINARY, packages) {
         if let Some(license) = find_package_license(info) {
             return Some(license);
         }
     }
-    if let Some(info) = find_package_by_spdxid(SPDX_ID_PORT, packages) {
+    if let Some(info) = find_package_by_spdx_id(SPDX_ID_PORT, packages) {
         if let Some(license) = find_package_license(info) {
             return Some(license);
         }
@@ -82,9 +82,10 @@ pub fn get_license_info(
 
         let found_license = find_license(packages);
 
-        let url = find_package_by_spdxid(SPDX_ID_RESOURCE_1, packages).map(|pkg| pkg.package_download_location.clone());
+        let url =
+            find_package_by_spdx_id(SPDX_ID_RESOURCE_1, packages).map(|pkg| pkg.package_download_location.clone());
 
-        if let Some(pkg) = find_package_by_spdxid(SPDX_ID_PORT, packages) {
+        if let Some(pkg) = find_package_by_spdx_id(SPDX_ID_PORT, packages) {
             let override_info = settings::Override::find_override(&pkg.package_name, overrides);
 
             let license = if override_info.is_some_and(|x| x.license_id.is_some()) {
