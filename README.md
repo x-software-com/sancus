@@ -6,11 +6,15 @@
 
 **NOTE:** Sancus currently expects deep integration with the build system, and is difficult to deploy to environments dissimilar to the X-Software environment. We do not have our tooling set up to accept external contributions at this time.
 
-Sancus is an open-source tool that extracts third-party license information from a deployment-ready application.
+Sancus is a tool designed to generate a SPDX (Software Package Data Exchange) file containing information about third-party licenses used in software packages. The goal is to collect comprehensive license information beyond what is available through existing tools like cargo-bundle-licenses, which focus on identifying third-party libraries used by crates, but this view often falls short because it doesn't take into account linked libraries. Sancus aims to fill this gap by scanning the AppDir identifying the libraries and finding license information using VCPKG and RPM package metadata.
 
-Currently, Sancus solely operates on [AppDir](https://github.com/TheAssassin/linuxdeploy/wiki/AppDir-specification) packages consisting of VCPKG libraries and operating system libraries. It collects information from both sources to extract licenses of all shared libraries that an application uses directly or indirectly within the AppDir. The result is a JSON file containing all license types and the texts.
+With Sancus, developers can easily identify and document the licenses associated with third-party dependencies in their projects. This makes it easier to manage intellectual property rights, ensure compliance with licensing requirements and maintain transparency in software development.
 
-The obtained third-party license information can be exported to directory structure in the AppDir or the 
+Currently, Sancus works exclusively with [AppDir](https://github.com/TheAssassin/linuxdeploy/wiki/AppDir-specification) packages consisting of VCPKG libraries and operating system libraries from RPM-based Linux distributions. It collects information from both sources to extract the licenses of all shared libraries that an application directly or indirectly uses within the AppDir. The result is a JSON SPDX file that summarizes the results, providing a clear and concise record of the third-party licenses used in the project.
+
+In addition to creating SPDX files, Sancus can also extract the contents of an existing SPDX file into a directory structure.
+
+While Sancus is currently limited in scope, it demonstrates a useful capability for managing license information in certain software ecosystems. As the tool evolves, support for other package formats and systems may be added.
 
 If you've never used Sancus before, or if you're trying to figure out how to use it, check out our [Getting Started](#getting-started) section.
 
@@ -34,10 +38,10 @@ Prerequisites:
 - [Git][getting-started:git]
 - [Rust][getting-started:rust] >= 1.70.0
 
-Add the following line to your `Cargo.toml`.
+Execute the following command:
 
 ```
-sancus = { git = "https://github.com/x-software-com/sancus" }
+cargo add sancus
 ```
 
 ### Development: Linux
@@ -45,7 +49,6 @@ sancus = { git = "https://github.com/x-software-com/sancus" }
 Prerequisites:
 - [Git][getting-started:git]
 - [Rust][getting-started:rust] >= 1.70.0
-- [Python][getting-started:python]
 
 First, download and setup the repository.
 
@@ -69,27 +72,26 @@ Across the different distributions of Linux, there are different packages you'll
 - AlmaLinux, Rocky Linux, CentOS and other RedHat-based distributions:
 
 ```sh
-$ sudo dnf install gcc python39 git
+$ sudo dnf install gcc git
 ```
 
 - Debian, Ubuntu, popOS, and other Debian-based distributions:
 
 ```sh
 $ sudo apt-get update
-$ sudo apt-get install build-essential git python3
+$ sudo apt-get install build-essential git
 ```
 
 - ArchLinux, Manjaro Linux, EndeavourOS, and other ArchLinux-based distributions:
 
 ```sh
-$ sudo pacman -Sy python git
+$ sudo pacman -Sy git
 ```
 
 For any other distributions, make sure you're installing at least gcc and g++. If you want to add instructions for your specific distribution, [please open a PR][contributing:submit-pr]!
 
 [getting-started:git]: https://git-scm.com/downloads
 [getting-started:rust]: https://rustup.rs/
-[getting-started:python]: https://www.python.org/downloads/
 
 # Privacy
 
@@ -99,4 +101,4 @@ Sancus does respect your privacy, we collect no data and do not send any telemet
 
 # License
 
-The code in this repository is licensed under either of [APACHE-2.0 License](LICENSE-APACHE) or [MIT License](LICENSE-MIT) at your option.
+The code in this repository is licensed under either of [Apache-2.0 License](LICENSE-APACHE) or [MIT License](LICENSE-MIT) at your option.
