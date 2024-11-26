@@ -13,6 +13,12 @@ setup-cargo-hack:
 setup-cargo-audit:
     cargo install --locked cargo-audit
 
+setup-cargo-typos-cli:
+   cargo install --locked typos-cli
+
+setup-cargo-machete:
+    cargo install cargo-machete
+
 setup-git:
     git config pull.rebase true
     git config branch.autoSetupRebase always
@@ -25,7 +31,7 @@ setup-cocogitto:
     cargo install --locked cocogitto
     cog install-hook --overwrite commit-msg
 
-setup: setup-git setup-cargo-hack setup-cargo-audit setup-cargo-tools setup-cocogitto self-update
+setup: setup-git setup-cargo-hack setup-cargo-audit setup-cargo-typos-cli setup-cargo-machete setup-cargo-tools setup-cocogitto self-update
     @echo "Done"
 
 setup-ci: setup-cargo-hack setup-cargo-audit setup-cargo-tools
@@ -44,8 +50,14 @@ hack rust-toolchain=rust-toolchain: setup-cargo-hack
 clippy rust-toolchain=rust-toolchain:
     cargo +{{rust-toolchain}} clippy --quiet --release --all-targets --all-features
 
+typos: setup-cargo-typos-cli
+    typos
+
 audit: setup-cargo-audit
     cargo audit
+
+machete: setup-cargo-machete
+    cargo machete --with-metadata
 
 cargo-fmt:
     cargo fmt --all
