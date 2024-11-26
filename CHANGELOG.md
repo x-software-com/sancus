@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.1](https://github.com/x-software-com/sancus/compare/v0.1.0...v0.1.1) - 2024-11-26
+
+### Other
+
+- improve README.md
+- add machete and typos to justfile
+- fix typos
+
 ## [v0.1.0](https://github.com/x-software-com/sancus/compare/96aa8bf492ffb107c1f56fa615c41ccd193e9d65..v0.1.0) - 2024-02-19
 #### Bug Fixes
 - improve handling of invalid filenames - ([23ef721](https://github.com/x-software-com/sancus/commit/23ef7219d267e187d3e5f46912e8e5fe2073d3b7)) - marcbull
