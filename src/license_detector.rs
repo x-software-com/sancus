@@ -10,11 +10,10 @@
 
 use anyhow::{Context, Result};
 use log::*;
-use once_cell::sync::OnceCell;
 use regex::Regex;
 use spdx::LicenseId;
 use std::path::Path;
-use std::{collections::HashMap, io::Write};
+use std::{collections::HashMap, io::Write, sync::OnceLock};
 
 use crate::license_text::LicenseText;
 
@@ -36,7 +35,7 @@ pub struct LicenseDetector {
     templates: Vec<LicenseHash>,
 }
 
-static INSTANCE: OnceCell<LicenseDetector> = OnceCell::new();
+static INSTANCE: OnceLock<LicenseDetector> = OnceLock::new();
 
 impl LicenseHash {
     pub fn new(id: Option<String>, text: &str) -> Self {

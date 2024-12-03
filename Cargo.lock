@@ -406,7 +406,6 @@ dependencies = [
  "clap",
  "flexi_logger",
  "log",
- "once_cell",
  "regex",
  "serde",
  "serde_json",
