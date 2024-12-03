@@ -7,6 +7,7 @@ repository = "https://github.com/x-software-com/sancus/"
 description = "Sancus is an open-source tool that extracts third-party license information from a deployment-ready application"
 readme = "README.md"
 edition = "2021"
+rust-version = "1.80"
 
 [lib]
 name = "sancus_lib"
@@ -33,4 +34,3 @@ termtree = "0.5"
 serde = { version = "1", features = ["derive"] }
 serde_yaml = "0.9"
 regex = "1"
-once_cell = "1"
