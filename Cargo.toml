@@ -6,8 +6,8 @@ homepage = "https://github.com/x-software-com/sancus/"
 repository = "https://github.com/x-software-com/sancus/"
 description = "Sancus is an open-source tool that extracts third-party license information from a deployment-ready application"
 readme = "README.md"
-edition = "2021"
-rust-version = "1.80"
+edition = "2024"
+rust-version = "1.85"
 
 [lib]
 name = "sancus_lib"
