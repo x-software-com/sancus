@@ -3,6 +3,37 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.1](https://github.com/x-software-com/sancus/compare/v0.1.0...v0.1.1) - 2025-02-27
+
+### Other
+
+- cargo update
+- update rust edition to 2024
+- apply cargo fmt changes
+- *(deps)* bump clap from 4.5.29 to 4.5.30
+- *(deps)* bump serde from 1.0.217 to 1.0.218
+- *(deps)* bump serde_json from 1.0.138 to 1.0.139
+- *(deps)* bump anyhow from 1.0.95 to 1.0.96
+- *(deps)* bump log from 0.4.25 to 0.4.26
+- *(deps)* bump crate-ci/typos from 1.29.7 to 1.29.9
+- *(deps)* bump clap from 4.5.28 to 4.5.29
+- *(deps)* bump crate-ci/typos from 1.29.5 to 1.29.7
+- *(deps)* bump spdx from 0.10.7 to 0.10.8
+- *(deps)* bump clap from 4.5.27 to 4.5.28
+- *(deps)* bump log from 0.4.22 to 0.4.25
+- *(deps)* bump serde_json from 1.0.133 to 1.0.138
+- *(deps)* bump serde from 1.0.215 to 1.0.217
+- *(deps)* bump clap from 4.5.21 to 4.5.27
+- *(deps)* bump anyhow from 1.0.93 to 1.0.95
+- *(deps)* bump flexi_logger from 0.29.6 to 0.29.8
+- *(deps)* bump crate-ci/typos from 1.28.2 to 1.29.5
+- *(deps)* bump crate-ci/typos from 1.28.1 to 1.28.2
+- replaced once_cell dependency
+- *(deps)* bump crate-ci/typos from 1.27.3 to 1.28.1
+- improve README.md
+- add machete and typos to justfile
+- fix typos
+
 ## [v0.1.0](https://github.com/x-software-com/sancus/compare/96aa8bf492ffb107c1f56fa615c41ccd193e9d65..v0.1.0) - 2024-02-19
 #### Bug Fixes
 - improve handling of invalid filenames - ([23ef721](https://github.com/x-software-com/sancus/commit/23ef7219d267e187d3e5f46912e8e5fe2073d3b7)) - marcbull
