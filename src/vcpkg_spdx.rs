@@ -121,7 +121,7 @@ pub fn get_license_info(
                     return Err(anyhow::anyhow!(
                         "Missing license identifier for VCPKG package {}",
                         pkg.package_name
-                    ))
+                    ));
                 }
             };
 

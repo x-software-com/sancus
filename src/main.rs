@@ -127,8 +127,7 @@ fn export_from_product(args: &ExtractFromProductArgs) -> Result<()> {
     for replace in &settings.overrides {
         trace!(
             "Found override for {} in settings. Comment: {}",
-            replace.package,
-            replace.comment
+            replace.package, replace.comment
         )
     }
 
