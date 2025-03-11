@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.2](https://github.com/x-software-com/sancus/compare/v0.1.1...v0.1.2) - 2025-03-11
+
+### Other
+
+- *(deps)* bump crate-ci/typos from 1.29.9 to 1.30.1
+
 ## [0.1.1](https://github.com/x-software-com/sancus/compare/v0.1.0...v0.1.1) - 2025-02-27
 
 ### Other
