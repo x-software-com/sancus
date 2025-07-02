@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.2](https://github.com/x-software-com/sancus/compare/v0.1.1...v0.1.2) - 2025-07-02
+
+### Other
+
+- fix some clippy warnings
+- add default recipe in justfile
+- *(deps)* bump clap from 4.5.31 to 4.5.40
+- *(deps)* bump crate-ci/typos from 1.30.1 to 1.33.1
+- *(deps)* bump anyhow from 1.0.96 to 1.0.98
+- *(deps)* bump serde from 1.0.218 to 1.0.219
+- *(deps)* bump log from 0.4.26 to 0.4.27
+- *(deps)* bump serde_json from 1.0.139 to 1.0.140
+- *(deps)* bump crate-ci/typos from 1.29.9 to 1.30.1
+
 ## [0.1.1](https://github.com/x-software-com/sancus/compare/v0.1.0...v0.1.1) - 2025-02-27
 
 ### Other
