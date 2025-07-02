@@ -87,7 +87,7 @@ impl Settings {
     pub fn load(file: &std::path::Path) -> Result<Self> {
         let str = std::fs::read_to_string(file)
             .with_context(|| format!("Cannot read settings file {}", file.to_str().unwrap_or("empty")).clone())?;
-        let mut settings = serde_yaml::from_str::<Self>(str.as_str())
+        let mut settings = serde_yaml_bw::from_str::<Self>(str.as_str())
             .with_context(|| format!("Cannot parse settings {}", file.to_str().unwrap_or("empty")).clone())?;
 
         // Map relative license file overwrites to settings file:
