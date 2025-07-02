@@ -45,7 +45,7 @@ fn package_collect_files(package: &str, patterns: Vec<&str>) -> Result<Vec<Strin
             list_packages_args.join(" ")
         )
         .context(error)
-        .context(format!("Cannot get package content of {}", package)));
+        .context(format!("Cannot get package content of {package}")));
     }
     let stdout = String::from_utf8(output.stdout)?;
     for file in stdout.lines() {
@@ -84,7 +84,7 @@ fn package_contains_file(package: &str, file: &str) -> Result<bool> {
             list_packages_args.join(" ")
         )
         .context(error)
-        .context(format!("Cannot get package content of {}", package)));
+        .context(format!("Cannot get package content of {package}")));
     }
     let stdout = String::from_utf8(output.stdout)?;
     for line in stdout.lines() {
@@ -115,7 +115,7 @@ pub fn package_name_of_lib(lib: &String) -> Result<String> {
             list_packages_args.join(" ")
         )
         .context(error)
-        .context(format!("Cannot get package name for library {}", lib)));
+        .context(format!("Cannot get package name for library {lib}")));
     }
     let mut packages: Vec<_> = vec![];
     let stdout = String::from_utf8(output.stdout)?;
@@ -214,11 +214,11 @@ pub fn package_info(package: &String, lib_info: &FileInfo, overrides: &[settings
     // Create SPDX license expression from the license IDs:
     let license_expression = if !license.is_empty() {
         match spdx::Expression::parse_mode(license.as_str(), spdx::ParseMode::LAX)
-            .context(format!("Cannot parse license expression for package {}", package))
+            .context(format!("Cannot parse license expression for package {package}"))
         {
             Ok(expr) => Some(expr),
             Err(error) => {
-                warn!("{:?}", error);
+                warn!("{error:?}");
                 None
             }
         }
