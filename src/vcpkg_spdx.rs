@@ -30,7 +30,7 @@ fn parse_spdx_file(file: &Path) -> Result<spdx_rs::models::SPDX> {
         .collect::<Vec<_>>();
     let spdx_string_clean = clean.join("\n");
 
-    serde_json::from_str(spdx_string_clean.as_ref()).context(format!("Failed to parse SPDX JSON file {:?}", file))
+    serde_json::from_str(spdx_string_clean.as_ref()).context(format!("Failed to parse SPDX JSON file {file:?}"))
 }
 
 fn find_package_by_spdx_id<'a>(
@@ -132,7 +132,7 @@ pub fn get_license_info(
                 )) {
                     Ok(expr) => Some(expr),
                     Err(error) => {
-                        warn!("{:?}", error);
+                        warn!("{error:?}");
                         None
                     }
                 }
@@ -225,12 +225,12 @@ fn parse_package(pkg: spdx_rs::models::PackageInformation) -> termtree::Tree<Str
     let mut found_license = None;
     if let Some(license) = pkg.declared_license {
         if license.to_string() != "NOASSERTION" {
-            found_license = Some(format!("declared license: {}", license));
+            found_license = Some(format!("declared license: {license}"));
         }
     }
     if let Some(license) = pkg.concluded_license {
         if found_license.is_none() && license.to_string() != "NOASSERTION" {
-            found_license = Some(format!("concluded license: {}", license));
+            found_license = Some(format!("concluded license: {license}"));
         }
     }
     if found_license.is_none() {

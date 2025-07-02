@@ -118,7 +118,7 @@ impl ThirdPartyLicenses {
                 // Workaround to fix unusual license ID: "License specified in file ($CARGO_HOME/registry/src/.../LICENSE)"
                 let file_name = license_text.license.replace(std::path::is_separator, "-");
                 let file_name = file_name.replace('$', "-");
-                let license_text_file = pkg_dir.join(format!("{}.txt", file_name));
+                let license_text_file = pkg_dir.join(format!("{file_name}.txt"));
 
                 std::fs::write(license_text_file.as_path(), license_text.text.clone()).with_context(|| {
                     format!(

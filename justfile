@@ -3,6 +3,10 @@
 # Default Rust toolchain
 rust-toolchain := "stable"
 
+# default recipe to display help information
+default:
+    @just --list
+
 #
 # Setup the environment:
 #
