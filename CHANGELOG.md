@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.3](https://github.com/x-software-com/sancus/compare/v0.1.2...v0.1.3) - 2025-07-07
+
+### Other
+
+- add missing end quote
+- remove no longer needed check
+- *(deps)* bump crate-ci/typos from 1.33.1 to 1.34.0
+
 ## [0.1.2](https://github.com/x-software-com/sancus/compare/v0.1.1...v0.1.2) - 2025-07-02
 
 ### Other
