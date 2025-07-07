@@ -133,7 +133,9 @@ pub fn package_name_of_lib(lib: &String) -> Result<String> {
     if let Some(package) = packages.first() {
         return Ok(package.clone());
     }
-    Err(anyhow::anyhow!("Cannot find any package containing the library '{lib}"))
+    Err(anyhow::anyhow!(
+        "Cannot find any package containing the library '{lib}'"
+    ))
 }
 
 fn query_package_info(package: &str, info: &str) -> Result<Option<String>> {
