@@ -86,10 +86,6 @@ impl ThirdPartyLicenses {
                         }
                     }
                 }
-
-                if !license_override.license_files.is_empty() {
-                    anyhow::bail!("License file overrides are currently not implemented for ThirdPartyLicenses");
-                }
             }
         }
         Ok(())
