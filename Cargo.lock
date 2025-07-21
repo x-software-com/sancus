@@ -89,6 +89,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
+name = "base64"
+version = "0.22.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
+
+[[package]]
 name = "bitflags"
 version = "2.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -471,10 +477,11 @@ dependencies = [
 
 [[package]]
 name = "serde_yaml_bw"
-version = "2.0.1"
+version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "036a618690434e8367d14719610eeab3be0ec6a27bbbe9f91afc839e61554c3e"
+checksum = "6ed392caf346a203483855a00bc3335d732fec9108e5970c512a0a9633aae68d"
 dependencies = [
+ "base64",
  "indexmap",
  "itoa",
  "ryu",
