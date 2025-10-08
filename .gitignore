@@ -11,8 +11,12 @@ target/
 # Ignore backupfiles from merge conflicts.
 *.orig
 
-# Ignore vscode/vscodium settings.
-.vscode
+# Ignore vscode/vscodium settings, exept for extensions.json.
+.vscode/*
+!.vscode/extensions.json
 
 # Ignore Python caches.
 __pycache__
+
+# Ignore the project specific cargo directory for NixOS
+.cargo-cache
