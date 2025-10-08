@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.4](https://github.com/x-software-com/sancus/compare/v0.1.3...v0.1.4) - 2025-10-08
+
+### Other
+
+- add shell.nix
+- cargo update
+- *(deps)* bump clap from 4.5.40 to 4.5.48
+- *(deps)* bump anyhow from 1.0.98 to 1.0.100
+- *(deps)* bump crate-ci/typos from 1.34.0 to 1.37.2
+- *(deps)* bump serde_yaml_bw from 2.0.1 to 2.4.1
+- *(deps)* bump serde_json from 1.0.140 to 1.0.145
+- *(deps)* bump spdx from 0.10.8 to 0.12.0
+- *(deps)* bump actions/checkout from 4 to 5
+
 ## [0.1.3](https://github.com/x-software-com/sancus/compare/v0.1.2...v0.1.3) - 2025-07-07
 
 ### Other
