@@ -78,3 +78,7 @@ self-update:
 
 clean:
     cargo clean
+
+clean-cache: clean
+    rm -rf .cargo-cache
+    @echo "Cleaned all cache directories"
