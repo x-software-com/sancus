@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.5](https://github.com/x-software-com/sancus/compare/v0.1.4...v0.1.5) - 2025-11-25
+
+### Other
+
+- fix rust version
+- *(deps)* upgrade dependencies
+- *(deps)* bump clap from 4.5.51 to 4.5.53
+- *(deps)* bump actions/checkout from 5 to 6
+- *(deps)* bump crate-ci/typos from 1.39.0 to 1.39.2
+- *(deps)* bump serde_yaml_bw from 2.4.1 to 2.5.1
+- *(deps)* bump crate-ci/typos from 1.38.1 to 1.39.0
+- add cargo machete to commit hooks
+- upgrade dependencies
+- *(deps)* bump clap from 4.5.49 to 4.5.50
+- improve nixos develop experience
+- *(deps)* bump regex from 1.11.3 to 1.12.2
+- *(deps)* bump clap from 4.5.48 to 4.5.49
+- use cocogitto-action v4 instead of main
+- *(deps)* bump flexi_logger from 0.31.6 to 0.31.7
+- *(deps)* bump crate-ci/typos from 1.37.2 to 1.38.1
+
 ## [0.1.4](https://github.com/x-software-com/sancus/compare/v0.1.3...v0.1.4) - 2025-10-08
 
 ### Other
