@@ -36,7 +36,7 @@ If you've never used Sancus before, or if you're trying to figure out how to use
 
 Prerequisites:
 - [Git][getting-started:git]
-- [Rust][getting-started:rust] >= 1.70.0
+- [Rust][getting-started:rust] >= 1.85
 
 Execute the following command:
 
@@ -48,7 +48,7 @@ cargo add sancus
 
 Prerequisites:
 - [Git][getting-started:git]
-- [Rust][getting-started:rust] >= 1.70.0
+- [Rust][getting-started:rust] >= 1.85
 
 First, download and setup the repository.
 
