@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.6](https://github.com/x-software-com/sancus/compare/v0.1.5...v0.1.6) - 2025-11-25
+
+### Other
+
+- use fully qualified versions in Cargo.toml
+
 ## [0.1.5](https://github.com/x-software-com/sancus/compare/v0.1.4...v0.1.5) - 2025-11-25
 
 ### Other
