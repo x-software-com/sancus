@@ -23,14 +23,14 @@ default = ["bin-dependencies"]
 bin-dependencies = ["flexi_logger", "clap"]
 
 [dependencies]
-clap = { version = "4", features = ["derive"], optional = true }
-flexi_logger = { version = "0.31", optional = true }
-log = "0.4"
-anyhow = { version = "1" }
-spdx = { version = "0.12", features = ["text"] }
-spdx-rs = "0.5"
-serde_json = "1"
-termtree = "0.5"
-serde = { version = "1", features = ["derive"] }
-serde_yaml_bw = "2"
-regex = "1"
+clap = { version = "4.5.53", features = ["derive"], optional = true }
+flexi_logger = { version = "0.31.7", optional = true }
+log = "0.4.28"
+anyhow = { version = "1.0.100" }
+spdx = { version = "0.12.0", features = ["text"] }
+spdx-rs = "0.5.5"
+serde_json = "1.0.145"
+termtree = "0.5.1"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_yaml_bw = "2.5.1"
+regex = "1.12.2"
