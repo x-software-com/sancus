@@ -9,11 +9,12 @@
 // SPDX-FileCopyrightText: 2024 X-Software GmbH <opensource@x-software.com>
 
 use anyhow::{Context, Result};
-use log::*;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
+#[cfg(feature = "scan")]
 use crate::license_info::LicenseInfo;
+#[cfg(feature = "scan")]
 use crate::settings;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone, PartialEq)]
@@ -55,6 +56,7 @@ impl ThirdPartyLicenses {
         })
     }
 
+    #[cfg(feature = "scan")]
     pub fn save(&self, file_path: &Path) -> Result<()> {
         // Create all parent directories if the don't exist:
         let parent_dir = file_path.parent().unwrap_or_else(|| {
@@ -74,6 +76,7 @@ impl ThirdPartyLicenses {
         })
     }
 
+    #[cfg(feature = "scan")]
     pub fn apply_overrides(&mut self, overrides: &[settings::Override]) -> Result<()> {
         for package in &mut self.third_party_libraries {
             if let Some(license_override) = settings::Override::find_override(&package.package_name, overrides) {
@@ -91,6 +94,7 @@ impl ThirdPartyLicenses {
         Ok(())
     }
 
+    #[cfg(feature = "scan")]
     pub fn export(&self, result_dir: &Path) -> Result<()> {
         let base_path = result_dir.join(self.root_name.clone());
         for package in &self.third_party_libraries {
@@ -127,6 +131,7 @@ impl ThirdPartyLicenses {
         Ok(())
     }
 
+    #[cfg(feature = "scan")]
     pub fn new(root_name: &str, license_infos: &[LicenseInfo]) -> Self {
         let mut third_party_libraries = vec![];
 
@@ -154,6 +159,7 @@ impl ThirdPartyLicenses {
         }
     }
 
+    #[cfg(feature = "debug")]
     pub fn print(&self) {
         let mut root_tree = termtree::Tree::new(self.root_name.clone());
 
@@ -173,7 +179,7 @@ impl ThirdPartyLicenses {
         }
 
         for line in root_tree.to_string().lines() {
-            debug!("{line}")
+            log::debug!("{line}")
         }
     }
 }
