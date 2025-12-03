@@ -8,7 +8,6 @@
 //
 // SPDX-FileCopyrightText: 2024 X-Software GmbH <opensource@x-software.com>
 
-use anyhow::Result;
 use std::{
     fs,
     path::{Path, PathBuf},
@@ -30,7 +29,7 @@ impl FileInfo {
     }
 }
 
-pub fn find_files_recurse(path: &PathBuf, filter: &str, ignore_list: &[String]) -> Result<Vec<FileInfo>> {
+pub fn find_files_recurse(path: &PathBuf, filter: &str, ignore_list: &[String]) -> std::io::Result<Vec<FileInfo>> {
     let mut libs: Vec<_> = vec![];
     for entry in fs::read_dir(path)? {
         let entry = entry?;

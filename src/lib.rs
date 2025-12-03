@@ -9,10 +9,15 @@
 // SPDX-FileCopyrightText: 2024 X-Software GmbH <opensource@x-software.com>
 
 pub mod file_info;
-pub mod license_detector;
 pub mod license_info;
 pub mod license_text;
-pub mod rpm_info;
-pub mod settings;
 pub mod third_party_licenses;
+
+#[cfg(feature = "scan")]
+pub mod license_detector;
+#[cfg(feature = "scan")]
+pub mod rpm_info;
+#[cfg(feature = "scan")]
+pub mod settings;
+#[cfg(feature = "scan")]
 pub mod vcpkg_spdx;
