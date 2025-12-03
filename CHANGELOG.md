@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.1.7](https://github.com/x-software-com/sancus/compare/v0.1.6...v0.1.7) - 2025-12-03
+
+### Other
+
+- update dependencies
+- *(deps)* bump crate-ci/typos from 1.39.2 to 1.40.0
+- add feature to scan for licenses and create a JSON-SPDX file
+- default features of all dependencies disabled
+
 ## [0.1.6](https://github.com/x-software-com/sancus/compare/v0.1.5...v0.1.6) - 2025-11-25
 
 ### Other
