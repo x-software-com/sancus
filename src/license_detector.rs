@@ -70,8 +70,8 @@ impl LicenseDetector {
 
     fn build() -> Self {
         let mut templates = vec![];
-        for (id, _full_name, _flags) in spdx::identifiers::LICENSES {
-            let license = spdx::license_id(id).unwrap();
+        for license in spdx::identifiers::LICENSES {
+            let license = spdx::license_id(license.name).unwrap();
 
             templates.push(LicenseHash::new(Some(license.name.to_owned()), license.text()));
         }
