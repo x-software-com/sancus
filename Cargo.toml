@@ -39,5 +39,5 @@ serde_json = { version = "1.0.145", default-features = false, features = [
 ] }
 termtree = { version = "0.5.1", default-features = false, optional = true }
 serde = { version = "1.0.228", default-features = false, features = ["derive"] }
-serde_yaml_bw = { version = "2.5.1", default-features = false, optional = true }
+serde_yaml_bw = { version = "2.5.2", default-features = false, optional = true }
 regex = { version = "1.12.2", default-features = false, optional = true }
