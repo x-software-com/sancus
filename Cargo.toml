@@ -29,7 +29,7 @@ clap = { version = "4.5.53", default-features = false, features = [
     "std",
     "derive",
 ], optional = true }
-flexi_logger = { version = "0.31.7", default-features = false, optional = true }
+flexi_logger = { version = "0.31.8", default-features = false, optional = true }
 log = { version = "0.4.29", default-features = false, optional = true }
 anyhow = { version = "1.0.100", default-features = false }
 spdx = { version = "0.13.0", default-features = false, features = ["text"] }
