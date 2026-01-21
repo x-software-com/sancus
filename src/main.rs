@@ -86,9 +86,9 @@ fn system_libs_info(system_libs: &Vec<FileInfo>, overrides: &[settings::Override
     let mut system_lib_info: Vec<LicenseInfo> = vec![];
     for lib_info in system_libs {
         trace!("Query system info of '{}'", lib_info.name);
-        let package_name = rpm_info::package_name_of_lib(&lib_info.name)?;
-        if !system_lib_info.iter().any(|info| info.package_name == package_name) {
-            let info = rpm_info::package_info(&package_name, lib_info, overrides)?;
+        let package = rpm_info::package_of_lib(&lib_info.name)?;
+        if !system_lib_info.iter().any(|info| info.package_name == package.name()) {
+            let info = package.license_info(lib_info.clone(), overrides)?;
             system_lib_info.push(info);
         }
     }
