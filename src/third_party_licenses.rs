@@ -41,7 +41,7 @@ pub struct ThirdPartyLicenses {
 }
 
 impl ThirdPartyLicenses {
-    pub fn load(file: &std::path::Path) -> Result<Self> {
+    pub fn load(file: &Path) -> Result<Self> {
         let str = std::fs::read_to_string(file).with_context(|| {
             format!(
                 "Cannot read third party licenses from file {}",
@@ -79,14 +79,14 @@ impl ThirdPartyLicenses {
     #[cfg(feature = "scan")]
     pub fn apply_overrides(&mut self, overrides: &[settings::Override]) -> Result<()> {
         for package in &mut self.third_party_libraries {
-            if let Some(license_override) = settings::Override::find_override(&package.package_name, overrides) {
-                if let Some(license_id) = &license_override.license_id {
-                    package.license = license_id.clone();
+            if let Some(license_override) = settings::Override::find_override(&package.package_name, overrides)
+                && let Some(license_id) = &license_override.license_id
+            {
+                package.license = license_id.clone();
 
-                    if license_override.overwrite_all_license_ids {
-                        for package_license in &mut package.licenses {
-                            package_license.license = license_id.clone();
-                        }
+                if license_override.overwrite_all_license_ids {
+                    for package_license in &mut package.licenses {
+                        package_license.license = license_id.clone();
                     }
                 }
             }

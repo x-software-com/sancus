@@ -109,13 +109,7 @@ impl PackageDB {
         let packages = self
             .packages
             .iter()
-            .filter_map(|pkg| {
-                if pkg.files.iter().any(|file| file.contains(library_name)) {
-                    Some(pkg)
-                } else {
-                    None
-                }
-            })
+            .filter(|pkg| pkg.files.iter().any(|file| file.contains(library_name)))
             .collect::<Vec<_>>();
         if packages.len() > 1 {
             return Err(anyhow::anyhow!(
@@ -233,10 +227,10 @@ impl Package {
                     spdx::expression::ExprNode::Op(_op) => None,
                 })
                 .for_each(|expr| {
-                    if let Some(expr) = expr {
-                        if let Some(license) = &expr.req.license.id() {
-                            collection.push(*license);
-                        }
+                    if let Some(expr) = expr
+                        && let Some(license) = &expr.req.license.id()
+                    {
+                        collection.push(*license);
                     }
                 });
             collection
@@ -252,7 +246,7 @@ impl Package {
         )?;
 
         Ok(LicenseInfo {
-            lib_info: lib_info,
+            lib_info,
             package_name: self.name.clone(),
             license,
             license_expression,
@@ -266,7 +260,7 @@ impl Package {
 fn static_package_db() -> Result<&'static PackageDB> {
     static PACKAGE_LIST: std::sync::OnceLock<Result<PackageDB>> = std::sync::OnceLock::new();
 
-    match PACKAGE_LIST.get_or_init(|| PackageDB::new()) {
+    match PACKAGE_LIST.get_or_init(PackageDB::new) {
         Ok(packages) => Ok(packages),
         Err(err) => {
             anyhow::bail!("Failed to initialize: {:?}", err);

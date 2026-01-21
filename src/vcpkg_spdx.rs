@@ -42,29 +42,30 @@ fn find_package_by_spdx_id<'a>(
 
 fn find_package_license(pkg: &PackageInformation) -> Option<String> {
     let mut found_license = None;
-    if let Some(license) = pkg.declared_license.as_ref() {
-        if license.to_string() != "NOASSERTION" {
-            found_license = Some(license.to_string());
-        }
+    if let Some(license) = pkg.declared_license.as_ref()
+        && license.to_string() != "NOASSERTION"
+    {
+        found_license = Some(license.to_string());
     }
-    if let Some(license) = pkg.concluded_license.as_ref() {
-        if found_license.is_none() && license.to_string() != "NOASSERTION" {
-            found_license = Some(license.to_string());
-        }
+    if let Some(license) = pkg.concluded_license.as_ref()
+        && found_license.is_none()
+        && license.to_string() != "NOASSERTION"
+    {
+        found_license = Some(license.to_string());
     }
     found_license
 }
 
 fn find_license(packages: &[spdx_rs::models::PackageInformation]) -> Option<String> {
-    if let Some(info) = find_package_by_spdx_id(SPDX_ID_BINARY, packages) {
-        if let Some(license) = find_package_license(info) {
-            return Some(license);
-        }
+    if let Some(info) = find_package_by_spdx_id(SPDX_ID_BINARY, packages)
+        && let Some(license) = find_package_license(info)
+    {
+        return Some(license);
     }
-    if let Some(info) = find_package_by_spdx_id(SPDX_ID_PORT, packages) {
-        if let Some(license) = find_package_license(info) {
-            return Some(license);
-        }
+    if let Some(info) = find_package_by_spdx_id(SPDX_ID_PORT, packages)
+        && let Some(license) = find_package_license(info)
+    {
+        return Some(license);
     }
     None
 }
@@ -148,10 +149,10 @@ pub fn get_license_info(
                         spdx::expression::ExprNode::Op(_op) => None,
                     })
                     .for_each(|expr| {
-                        if let Some(expr) = expr {
-                            if let Some(license) = &expr.req.license.id() {
-                                collection.push(*license);
-                            }
+                        if let Some(expr) = expr
+                            && let Some(license) = &expr.req.license.id()
+                        {
+                            collection.push(*license);
                         }
                     });
                 collection
@@ -215,23 +216,21 @@ fn parse_package(pkg: spdx_rs::models::PackageInformation) -> termtree::Tree<Str
         "Package: {} ({})",
         pkg.package_name, pkg.package_spdx_identifier
     ));
-    if pkg.package_home_page.is_some() {
-        sub_tree.push(termtree::Tree::new(format!(
-            "Homepage: {}",
-            pkg.package_home_page.unwrap()
-        )));
+    if let Some(home_page) = &pkg.package_home_page {
+        sub_tree.push(termtree::Tree::new(format!("Homepage: {}", home_page)));
     }
 
     let mut found_license = None;
-    if let Some(license) = pkg.declared_license {
-        if license.to_string() != "NOASSERTION" {
-            found_license = Some(format!("declared license: {license}"));
-        }
+    if let Some(license) = pkg.declared_license
+        && license.to_string() != "NOASSERTION"
+    {
+        found_license = Some(format!("declared license: {license}"));
     }
-    if let Some(license) = pkg.concluded_license {
-        if found_license.is_none() && license.to_string() != "NOASSERTION" {
-            found_license = Some(format!("concluded license: {license}"));
-        }
+    if let Some(license) = pkg.concluded_license
+        && found_license.is_none()
+        && license.to_string() != "NOASSERTION"
+    {
+        found_license = Some(format!("concluded license: {license}"));
     }
     if found_license.is_none() {
         found_license = Some("FOUND NO LICENSE!".to_owned());
