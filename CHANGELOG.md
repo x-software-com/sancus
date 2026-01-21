@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file. See [conven
 
 - - -
 
+## [0.2.0](https://github.com/x-software-com/sancus/compare/v0.1.7...v0.2.0) - 2026-01-21
+
+### Other
+
+- *(deps)* bump crate-ci/typos from 1.40.0 to 1.42.0
+- fix clippy issues
+- upgrade dependencies and rust-version
+- improved rpm query
+- add missing feature
+
 ## [0.1.7](https://github.com/x-software-com/sancus/compare/v0.1.6...v0.1.7) - 2025-12-03
 
 ### Other
