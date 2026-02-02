@@ -25,7 +25,7 @@ scan = ["spdx-rs", "serde_yaml_bw", "regex", "dep:termtree", "log"]
 debug = ["dep:termtree", "log"]
 
 [dependencies]
-clap = { version = "4.5.54", default-features = false, features = [
+clap = { version = "4.5.56", default-features = false, features = [
     "std",
     "derive",
 ], optional = true }
